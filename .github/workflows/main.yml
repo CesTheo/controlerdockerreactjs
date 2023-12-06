@@ -22,5 +22,5 @@ jobs:
       - run: ls
       - run: ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -T theo@51.178.30.100 "ls"
       - run: ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -T theo@51.178.30.100 "pwd"
-      - run: scp -r -o StrictHostKeyChecking=no ./build -i ~/.ssh/id_rsa theo@51.178.30.100:/home/theo/dev
+      - run: scp -r -o StrictHostKeyChecking=no ./build -i ~/.ssh/id_rsa theo@51.178.30.100:home/theo/dev
       
