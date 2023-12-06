@@ -21,5 +21,5 @@ jobs:
           ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
       - run: ls
       # - run: ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -T theo@51.178.30.100 "ls"
-      - run: scp -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no /build theo@51.178.30.100:/web
+      - run: scp -r /build -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no theo@51.178.30.100:/home/theo/web
       
