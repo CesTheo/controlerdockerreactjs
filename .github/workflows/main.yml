@@ -1,4 +1,4 @@
-name: Intégration continue et déploiement continu
+name: Intégration continue et déploiement continue
 on:
   push:
     branches:
