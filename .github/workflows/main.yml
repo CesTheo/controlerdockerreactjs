@@ -19,12 +19,17 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY  }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-      - run: ls
       - run: ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -T theo@51.178.30.100 "ls"
-      - run: ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -T theo@51.178.30.100 "pwd"
       - name: setup SSH
         uses: webfactory/ssh-agent@v0.5.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      - run: scp -r -o StrictHostKeyChecking=no ./build ${{ secrets.USER }}@${{ secrets.HOST }}:/home/theo/web
+      - run: |
+          date=$(date +"%Y-%m-%d-%H-%M-%S")
+
+
+        # build_name="build-${date_and_time}"
+        # echo "Build ${build_name}" > ${build_name}.txt
+        # mkdir 
+        # scp -r -o StrictHostKeyChecking=no ./build ${{ secrets.USER }}@${{ secrets.HOST }}:/home/theo/web
       
