@@ -25,11 +25,6 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - run: |
-          date=$(date +"%Y-%m-%d-%H-%M-%S")
-
-
-        # build_name="build-${date_and_time}"
-        # echo "Build ${build_name}" > ${build_name}.txt
-        # mkdir 
-        # scp -r -o StrictHostKeyChecking=no ./build ${{ secrets.USER }}@${{ secrets.HOST }}:/home/theo/web
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -T theo@51.178.30.100 'cd web | mkdir $(date +"%Y-%m-%d-%H-%M")'
+          scp -r -o StrictHostKeyChecking=no ./build ${{ secrets.USER }}@${{ secrets.HOST }}:/home/theo/web/$(date +"%Y-%m-%d-%H-%M")
       
