@@ -28,6 +28,5 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Création du dossier avec la date + transfert du document
-        run: |
-          scp -r -o StrictHostKeyChecking=no ./build ${{ secrets.USER }}@${{ secrets.HOST }}:/home/theo/web/$(date +"%Y-%m-%d-%H-%M")
+        run: scp -r -o StrictHostKeyChecking=no ./build ${{ secrets.USER }}@${{ secrets.HOST }}:/home/theo/web/$(date +"%Y-%m-%d-%H-%M")
       
