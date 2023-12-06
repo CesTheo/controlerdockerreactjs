@@ -13,11 +13,11 @@ jobs:
         with:
           node-version: 16.x
       - run: yarn install
-      - run: yarn build
+      - run: yarn run build
       - run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY  }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-      - run: ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -T theo@51.178.30.100 "cd web && cp -r ./build/* ."s
+      - run: ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -T theo@51.178.30.100 "rsync -av ./build/* web"
       
