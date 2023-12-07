@@ -1,4 +1,4 @@
-# CI / CI
+# CI / CD
 
 Une intégration continue est un déploiment continue sur un serveur à était mise en place sur la branch main à chaque push
 
