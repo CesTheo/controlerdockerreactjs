@@ -19,14 +19,14 @@ jobs:
       - name: Config de la clé private via création d'un fichier + injection
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY  }}" > ~/.ssh/id_rsa
+          echo "${{ secrets.KEY  }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
       - run: ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -T theo@51.178.30.100 "ls"
       - name: Mise en place du SSH agent (car scp ne fonctionne pas sans)
         uses: webfactory/ssh-agent@v0.5.0
         with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.KEY }}
       - name: Création du dossier avec la date + transfert du document
         run: scp -r -o StrictHostKeyChecking=no ./build ${{ secrets.USER }}@${{ secrets.HOST }}:/home/theo/web/$(date +"%Y-%m-%d-%H-%M")
       
